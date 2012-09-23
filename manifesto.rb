@@ -13,7 +13,7 @@ use OmniAuth::Builder do
 end
   
 get '/' do
-  erb "<a href='/auth/twitter'>Login with twitter</a><br>"
+  erb "<a href='/auth/twitter'>Sign up using twitter</a><br>"
 end
   
 get '/auth/:provider/callback' do
