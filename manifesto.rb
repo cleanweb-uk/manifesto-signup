@@ -42,9 +42,12 @@ get '/signed' do
 end
 
 get '/signatories' do
+  @count = 42
+  @signatories = ['@Floppy'] * @count
   erb :signatories, :layout => false
 end
 
 get '/count' do
+  @count = 42
   erb :count, :layout => false
 end
