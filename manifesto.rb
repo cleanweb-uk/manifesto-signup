@@ -37,6 +37,6 @@ get '/auth/:provider/deauthorized' do
 end
   
 get '/signed' do
-  throw(:halt, [401, "Not authorized\n"]) unless session[:user]
+  redirect '/' and return unless session[:user]
   erb :signed
 end
