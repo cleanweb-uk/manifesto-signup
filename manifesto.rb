@@ -3,10 +3,14 @@ require 'sinatra'
 require 'json'
 require 'omniauth'
 require 'omniauth-twitter'
+require 'redis'
 
 configure do
   set :sessions, true
   set :inline_templates, true
+  # Redis configuration
+  uri = URI.parse(ENV["REDISTOGO_URL"])
+  REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 end
 use OmniAuth::Builder do
   provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
