@@ -5,6 +5,8 @@ require 'omniauth'
 require 'omniauth-twitter'
 require 'redis'
 
+DOMAIN = ENV['DOMAIN'] || 'cleanweb.org.uk'
+
 configure do
   set :sessions, true
   set :inline_templates, true

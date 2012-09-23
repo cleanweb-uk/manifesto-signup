@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cleanweb UK</title>
+    <meta name="author" content="Cleanweb Manifesto">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="http://manifesto.<%=DOMAIN%>">
+    <link href="//<%=DOMAIN%>/favicon.png" rel="icon">
+    <link href="//<%=DOMAIN%>/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="//<%=DOMAIN%>/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="//<%=DOMAIN%>/stylesheets/main.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      body {
+        padding-bottom: 40px;
+      }
+      h1 {
+        margin-bottom: 15px;
+      }
+      img {
+        max-width: 100%;
+      }
+      .sharing, .meta, .pager {
+        margin: 20px 0px 20px 0px;
+      }
+      .page-footer p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav role="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="http://cleanweb.org.uk/">Cleanweb UK</a>
+            <div class="nav-collapse">
+              <ul class="nav">
+                <li><a href="http://<%=DOMAIN%>/">Home</a></li>
+                <li><a href="http://<%=DOMAIN%>/manifesto.html">Manifesto</a></li>
+                <li><a href="http://<%=DOMAIN%>/ignite.html">Ignite</a></li>
+                <li><a href="http://<%=DOMAIN%>/events.html">Events</a></li>
+                <li><a href="http://<%=DOMAIN%>/contact.html">Contact</a></li>
+                <li><a href="http://<%=DOMAIN%>/about.html">About</a></li>
+              </ul>
+              <ul class="nav pull-right" data-subscription="rss">
+                <li><a href="http://<%=DOMAIN%>/atom.xml" rel="subscribe-rss" title="subscribe via Atom"><img src='//<%=DOMAIN%>/images/rss.png' width='16px' height='16px' alt='Subscribe'/></a></li>  
+              </ul>
+              <ul class="nav pull-right">
+                <li><a href="http://cleanweb.co">Cleanweb Global</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span9">
+          <%= yield %>
+        </div>
+        <div class="sidebar-nav span3">  
+          <div class='logo'>
+            <img src='//<%=DOMAIN%>/images/tree.png'/>
+          </div>
+        </div>
+      </div>
+      <footer role="contentinfo" class="page-footer"><hr>
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License"  style="border-width:0; vertical-align: middle;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> -
+          <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
