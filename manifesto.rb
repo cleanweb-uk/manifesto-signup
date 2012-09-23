@@ -40,3 +40,11 @@ get '/signed' do
   redirect '/' and return unless session[:user]
   erb :signed
 end
+
+get '/signatories' do
+  erb :signatories, :layout => false
+end
+
+get '/count' do
+  erb :count, :layout => false
+end
