@@ -19,8 +19,13 @@ get '/' do
 end
   
 get '/auth/:provider/callback' do
-  erb "<h1>#{params[:provider]}</h1>
-       <pre>#{JSON.pretty_generate(request.env['omniauth.auth'])}</pre>"
+  # Get omniauth data
+  auth_data = request.env['omniauth.auth']
+  session[:user] = "#{auth_data['provider']}:#{auth_data['uid']}"
+  # Store signature
+  # TODO
+  # Redirect to signed page
+  redirect '/signed'
 end
   
 get '/auth/failure' do
