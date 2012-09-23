@@ -3,9 +3,8 @@
   <head>
   </head>
   <body>
-    <h3><%= @count %> people have signed so far:</h3>
     <% @signatories.each do |signatory| %>
-      SIGNATORY
+    <%= signatory %>
     <% end %>
   </body>
 </html>
