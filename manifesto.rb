@@ -15,7 +15,7 @@ use OmniAuth::Builder do
 end
   
 get '/' do
-  erb "<a href='/auth/twitter'>Sign up using twitter</a><br>"
+  erb :index
 end
   
 get '/auth/:provider/callback' do
@@ -24,20 +24,14 @@ get '/auth/:provider/callback' do
 end
   
 get '/auth/failure' do
-  erb "<h1>Authentication Failed:</h1><h3>message:<h3> <pre>#{params}</pre>"
+  erb :auth_failed
 end
   
 get '/auth/:provider/deauthorized' do
-  erb "#{params[:provider]} has deauthorized this app."
+  erb :deauthorized
 end
   
 get '/signed' do
-  throw(:halt, [401, "Not authorized\n"]) unless session[:authenticated]
-  erb "<pre>#{request.env['omniauth.auth'].to_json}</pre><hr>
-       <a href='/logout'>Logout</a>"
-end
-  
-get '/logout' do
-  session[:authenticated] = false
-  redirect '/'
+  throw(:halt, [401, "Not authorized\n"]) unless session[:user]
+  erb :signed
 end
