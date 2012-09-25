@@ -6,7 +6,6 @@ require 'omniauth-twitter'
 require 'mongoid'
 require './signee'
 require 'dotenv'
-require 'pry'
 
 Dotenv.load
 
