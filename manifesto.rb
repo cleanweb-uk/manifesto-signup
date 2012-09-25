@@ -3,6 +3,14 @@ require 'sinatra'
 require 'json'
 require 'omniauth'
 require 'omniauth-twitter'
+require 'mongoid'
+require './signee'
+require 'dotenv'
+require 'pry'
+
+Dotenv.load
+
+Mongoid.load!('mongoid.yml', :development)
 
 DOMAIN = ENV['DOMAIN'] || 'cleanweb.org.uk'
 
@@ -23,7 +31,23 @@ get '/auth/:provider/callback' do
   auth_data = request.env['omniauth.auth']
   session[:user] = "#{auth_data['provider']}:#{auth_data['uid']}"
   # Store signature
-  # TODO
+
+  binding.pry
+  # File.open('omniauth.dump.json', 'w') do |f|
+  #   f << auth_data['info'].to_json
+  # end  
+  
+  s = Signee.create( 
+    :twitter_id   => auth_data['uid'],
+    :name         => auth_data['info']['name'],
+    :nickname     => auth_data['info']['nickname'],    
+    :location     => auth_data['info']['location'],
+    :description  => auth_data['info']['description'],
+    :image        => auth_data['info']['image'],
+    :twitter_url  => auth_data['info']['urls']['Twitter'],
+    :website      => auth_data['info']['urls']['Website']
+  )
+
   # Redirect to signed page
   redirect '/signed'
 end
@@ -42,12 +66,17 @@ get '/signed' do
 end
 
 get '/signatories' do
-  @count = 42
-  @signatories = ['@Floppy'] * @count
+  @count = Signee.count
+  
+  
+  @signatories = [] 
+  Signee.each do |signee|
+    @signatories << "#{signee['name']}"
+  end
   erb :signatories, :layout => false
 end
 
 get '/count' do
-  @count = 42
+  @count = Signee.count
   erb :count, :layout => false
 end
