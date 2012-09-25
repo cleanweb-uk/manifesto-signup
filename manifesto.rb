@@ -31,11 +31,6 @@ get '/auth/:provider/callback' do
   auth_data = request.env['omniauth.auth']
   session[:user] = "#{auth_data['provider']}:#{auth_data['uid']}"
   # Store signature
-
-  binding.pry
-  # File.open('omniauth.dump.json', 'w') do |f|
-  #   f << auth_data['info'].to_json
-  # end  
   
   s = Signee.create( 
     :twitter_id   => auth_data['uid'],
@@ -67,9 +62,7 @@ end
 
 get '/signatories' do
   @count = Signee.count
-  
-  
-  @signatories = [] 
+  @signatories = []
   Signee.each do |signee|
     @signatories << "#{signee['name']}"
   end
