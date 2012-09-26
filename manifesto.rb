@@ -61,10 +61,7 @@ end
 
 get '/signatories' do
   @count = Signee.count
-  @signatories = []
-  Signee.each do |signee|
-    @signatories << "#{signee['name']}"
-  end
+  @signatories = Signee.all.reverse
   erb :signatories, :layout => false
 end
 
