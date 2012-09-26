@@ -57,6 +57,7 @@ end
   
 get '/signed' do
   redirect '/' and return unless session[:user]
+  @count = Signee.count
   erb :signed
 end
 
