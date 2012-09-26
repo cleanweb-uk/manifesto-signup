@@ -30,17 +30,18 @@ get '/auth/:provider/callback' do
   auth_data = request.env['omniauth.auth']
   session[:user] = "#{auth_data['provider']}:#{auth_data['uid']}"
   # Store signature
-  
-  s = Signee.create( 
-    :twitter_id   => auth_data['uid'],
-    :name         => auth_data['info']['name'],
-    :nickname     => auth_data['info']['nickname'],    
-    :location     => auth_data['info']['location'],
-    :description  => auth_data['info']['description'],
-    :image        => auth_data['info']['image'],
-    :twitter_url  => auth_data['info']['urls']['Twitter'],
-    :website      => auth_data['info']['urls']['Website']
-  )
+  if Signee.find_by(:twitter_id => auth_data['uid']).nil?
+    s = Signee.create( 
+      :twitter_id   => auth_data['uid'],
+      :name         => auth_data['info']['name'],
+      :nickname     => auth_data['info']['nickname'],    
+      :location     => auth_data['info']['location'],
+      :description  => auth_data['info']['description'],
+      :image        => auth_data['info']['image'],
+      :twitter_url  => auth_data['info']['urls']['Twitter'],
+      :website      => auth_data['info']['urls']['Website']
+    )
+  end
 
   # Redirect to signed page
   redirect '/signed'
