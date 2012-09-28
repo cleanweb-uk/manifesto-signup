@@ -10,4 +10,5 @@ gem 'mongoid'
 group :development do
   gem 'powder'
   gem 'pry'
+  gem 'af' # appfog deployment gem
 end
