@@ -6,6 +6,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv'
 gem 'mongoid'
+gem 'thin'
 
 group :development do
   gem 'powder'
