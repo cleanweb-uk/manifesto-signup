@@ -69,4 +69,8 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      hosts: 
+        - <%= JSON.parse(ENV['VCAP_SERVICES'])['mongodb-1.8'].first['credentials']['hostname'] rescue 'localhost' %>:<%= JSON.parse( ENV['VCAP_SERVICES'] )['mongodb-1.8'].first['credentials']['port'] rescue 27017 %>
+      database:  <%= JSON.parse( ENV['VCAP_SERVICES'] )['mongodb-1.8'].first['credentials']['db'] rescue 'tutorial_db' %>
+      username: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mongodb-1.8'].first['credentials']['username'] rescue '' %>
+      password: <%= JSON.parse( ENV['VCAP_SERVICES'] )['mongodb-1.8'].first['credentials']['password'] rescue '' %>
