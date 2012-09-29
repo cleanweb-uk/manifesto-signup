@@ -9,7 +9,7 @@ require 'dotenv'
 
 Dotenv.load
 
-Mongoid.load!('mongoid.yml', :development)
+Mongoid.load!('mongoid.yml')
 
 DOMAIN = ENV['DOMAIN'] || 'cleanweb.org.uk'
 
