@@ -9,7 +9,7 @@
     <ul class="thumbnails">
       <% @signatories.each do |signee| %>
         <li class="span4" style='background-color: white'>
-          <a href="<%= signee['twitter_url'] %>" class="thumbnail">
+          <a href="<%= signee['twitter_url'] %>" class="thumbnail" target ='_top'>
             <img src="<%= signee['image'] %>" alt="<%= signee['nickname'] %>" class='pull-left' style='margin-right: 10px; width: 32px; height: 32px'>
             <strong><%= signee['name'] %></strong><br/>
             @<%= signee['nickname'] %>
