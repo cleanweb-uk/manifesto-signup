@@ -16,6 +16,7 @@ DOMAIN = ENV['DOMAIN'] || 'cleanweb.org.uk'
 configure do
   set :sessions, true
   set :inline_templates, true
+  set :root, File.dirname(__FILE__)
 end
 use OmniAuth::Builder do
   provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
